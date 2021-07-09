@@ -1,5 +1,6 @@
 package com.example.demo.product;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -8,10 +9,14 @@ import java.util.List;
 @Service
 public class ProductService
 {
+    private final ProductRepository productRepository;
+
+    @Autowired
+    public ProductService(ProductRepository productRepository){
+        this.productRepository = productRepository;
+    }
+
     public List<Product> getProduct(){
-        return List.of(
-                new Product(1L,"yeet",1,"small"),
-                new Product( 1L,"yeet2",2,"medium")
-        );
+        return productRepository.findAll();
     }
 }

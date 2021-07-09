@@ -2,30 +2,18 @@ package com.example.demo.product;
 
 import javax.persistence.*;
 
-
+@Entity
 @Table
-@Entity(name = "productTable")
 public class Product {
-
     @Id
-    @SequenceGenerator(
-            name = "id",
-            sequenceName = "id",
-            allocationSize = 1
+    @GeneratedValue(strategy = GenerationType.IDENTITY
+//            generator = "product_sequence"
     )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "id"
-    )
-    private long id;
+    private int id;
 
-    @Column(name = "name")
     private String name;
-    @Column(name = "type")
     private Integer type;
-    @Column(name = "description")
     private String description;
-
 
 
     public Product(String name,
@@ -37,7 +25,7 @@ public class Product {
     }
 
     public Product(
-            long id,
+            Integer id,
             String name,
             Integer type,
             String description) {
@@ -85,12 +73,12 @@ public class Product {
                 '}';
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     @Id
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 }
