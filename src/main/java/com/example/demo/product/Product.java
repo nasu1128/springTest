@@ -3,13 +3,11 @@ package com.example.demo.product;
 import javax.persistence.*;
 
 @Entity
-@Table
 public class Product {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY
-//            generator = "product_sequence"
-    )
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     private String name;
     private Integer type;
@@ -25,7 +23,7 @@ public class Product {
     }
 
     public Product(
-            Integer id,
+            long id,
             String name,
             Integer type,
             String description) {
@@ -73,12 +71,11 @@ public class Product {
                 '}';
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    @Id
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 }

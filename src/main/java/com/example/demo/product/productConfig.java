@@ -17,7 +17,6 @@ public class productConfig {
                     "yeet",
                     1,
                     "small"
-
             );
 
             Product product2 = new Product(
