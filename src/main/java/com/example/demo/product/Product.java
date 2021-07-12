@@ -3,15 +3,17 @@ package com.example.demo.product;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "product")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Integer id;
 
     private String name;
     private Integer type;
     private String description;
+    private Boolean isDeleted;
 
 
     public Product(String name,
@@ -20,10 +22,11 @@ public class Product {
         this.name = name;
         this.type = type;
         this.description = description;
+        this.isDeleted = false;
     }
 
     public Product(
-            long id,
+            Integer id,
             String name,
             Integer type,
             String description) {
@@ -31,6 +34,7 @@ public class Product {
         this.name = name;
         this.type = type;
         this.description = description;
+        this.isDeleted = false;
     }
 
     public Product() {
@@ -68,14 +72,23 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", type=" + type +
                 ", description='" + description + '\'' +
+                ", isDeleted=" + isDeleted +
                 '}';
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
     }
 }
